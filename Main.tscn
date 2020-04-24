@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://gfx/tiles.png" type="Texture" id=2]
@@ -11,22 +11,31 @@
 [ext_resource path="res://Particles.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scripts/AnimationPlayer.gd" type="Script" id=10]
 [ext_resource path="res://gfx/player.png" type="Texture" id=11]
-[ext_resource path="res://KinematicBody2D.gd" type="Script" id=12]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=12]
 [ext_resource path="res://sfx/walk.wav" type="AudioStream" id=13]
 
-[sub_resource type="ConvexPolygonShape2D" id=5]
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=7]
+[sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
-[sub_resource type="TileSet" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+
+[sub_resource type="TileSet" id=5]
 0/name = "red"
 0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
@@ -37,14 +46,14 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 0/navigation_offset = Vector2( 0, 0 )
 0/shape_offset = Vector2( 0, 0 )
 0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 5 )
+0/shape = SubResource( 1 )
 0/shape_one_way = false
 0/shape_one_way_margin = 1.0
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 5 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
@@ -58,14 +67,14 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 1/navigation_offset = Vector2( 0, 0 )
 1/shape_offset = Vector2( 0, 0 )
 1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 4 )
+1/shape = SubResource( 2 )
 1/shape_one_way = false
 1/shape_one_way_margin = 1.0
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 4 ),
+"shape": SubResource( 2 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
@@ -73,47 +82,109 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 2/texture = ExtResource( 2 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 0, 64, 64, 64 )
+2/region = Rect2( 128, 0, 64, 64 )
 2/tile_mode = 0
 2/occluder_offset = Vector2( 0, 0 )
 2/navigation_offset = Vector2( 0, 0 )
 2/shape_offset = Vector2( 0, 0 )
 2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape = SubResource( 6 )
+2/shape = SubResource( 3 )
 2/shape_one_way = false
 2/shape_one_way_margin = 1.0
 2/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 6 ),
+"shape": SubResource( 3 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 2/z_index = 0
-3/name = "yellow"
+3/name = "cyan"
 3/texture = ExtResource( 2 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
-3/region = Rect2( 64, 64, 64, 64 )
+3/region = Rect2( 192, 0, 64, 64 )
 3/tile_mode = 0
 3/occluder_offset = Vector2( 0, 0 )
 3/navigation_offset = Vector2( 0, 0 )
 3/shape_offset = Vector2( 0, 0 )
 3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape = SubResource( 7 )
+3/shape = SubResource( 4 )
 3/shape_one_way = false
 3/shape_one_way_margin = 1.0
 3/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 7 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 3/z_index = 0
+4/name = "magenta"
+4/texture = ExtResource( 2 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 64, 64, 64 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape = SubResource( 8 )
+4/shape_one_way = false
+4/shape_one_way_margin = 1.0
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0
+5/name = "yellow"
+5/texture = ExtResource( 2 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 64, 64, 64, 64 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape = SubResource( 9 )
+5/shape_one_way = false
+5/shape_one_way_margin = 1.0
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 9 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+5/z_index = 0
+6/name = "gray"
+6/texture = ExtResource( 2 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 192, 192, 64, 64 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape = SubResource( 10 )
+6/shape_one_way = false
+6/shape_one_way_margin = 1.0
+6/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 10 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+6/z_index = 0
 
-[sub_resource type="Animation" id=2]
-resource_name = "MoveFakes"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("TileSwapper/FakeSel:way")
 tracks/0/interp = 1
@@ -139,7 +210,7 @@ tracks/1/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 16, 16 )
 
 [node name="Main" type="Node2D"]
@@ -153,7 +224,7 @@ smoothing_speed = 8.0
 script = ExtResource( 3 )
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 1 )
+tile_set = SubResource( 5 )
 collision_use_kinematic = true
 format = 1
 script = ExtResource( 4 )
@@ -172,16 +243,14 @@ script = ExtResource( 6 )
 
 [node name="TileSwapper" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
-anims/MoveFakes = SubResource( 2 )
+anims/MoveFakes = SubResource( 6 )
 script = ExtResource( 10 )
 
 [node name="FakeSel" parent="TileSwapper" instance=ExtResource( 8 )]
 position = Vector2( 192, 128 )
-way = 1.0
 
 [node name="FakeAdj" parent="TileSwapper" instance=ExtResource( 8 )]
 position = Vector2( 320, 128 )
-way = 1.0
 
 [node name="BreakDelay" type="Timer" parent="."]
 wait_time = 0.05
@@ -194,7 +263,7 @@ max_distance = 12345.0
 attenuation = 6.54158e-05
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 40, -64 )
+position = Vector2( 128, 128 )
 script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
@@ -204,7 +273,7 @@ __meta__ = {
 texture = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource( 3 )
+shape = SubResource( 7 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource( 13 )
@@ -214,4 +283,4 @@ attenuation = 0.00464534
 [connection signal="tile_hovered" from="TileMap" to="." method="_on_TileMap_tile_hovered"]
 [connection signal="tile_unhovered" from="TileMap" to="." method="_on_TileMap_tile_unhovered"]
 [connection signal="animation_finished" from="TileSwapper" to="TileSwapper" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="started_moving" from="Player" to="." method="_on_Player_started_moving"]
+[connection signal="pos_changed" from="Player" to="Camera2D" method="_on_Player_pos_changed"]

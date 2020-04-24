@@ -28,13 +28,6 @@ func _on_TileMap_tile_hovered(tile_world_pos):
 func _on_TileMap_tile_unhovered():
 	$Picker.reset()
 
-func _on_Player_started_moving():
-	var diff = $Player.position - $Camera2D.smooth_pos
-	diff = diff.abs()
-	
-	#if diff.x > 256 or diff.y > 256:
-	$Camera2D.smooth_pos = $Player.position
-
 func select(tile_coord, tile_world_pos):
 	if tile_coord == null:
 		$Selector.reset()

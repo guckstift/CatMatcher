@@ -36,3 +36,16 @@ func _process(delta):
 	position = lerp(position, smooth_pos, 4.0 * delta)
 	zoom.x = lerp(zoom.x, smooth_zoom, 4.0 * delta)
 	zoom.y = zoom.x
+
+func _on_Player_pos_changed(player_pos):
+	var diff = player_pos - smooth_pos
+	var zdiff = diff / zoom
+	
+	if zdiff.x > 256:
+		smooth_pos.x += zdiff.x - 256
+	if zdiff.x < -256:
+		smooth_pos.x += zdiff.x + 256
+	if zdiff.y > 256:
+		smooth_pos.y += zdiff.y - 256
+	if zdiff.y < -256:
+		smooth_pos.y += zdiff.y + 256

@@ -4,11 +4,21 @@ signal tile_clicked(tile_world_pos, tile_coord)
 signal tile_hovered(tile_world_pos)
 signal tile_unhovered
 
-func _ready():
+var size = Vector2(16, 16)
 
-	for x in range(256):
-		for y in range(256):
-			set_cell(x, y, randi() % 4)
+func _ready():
+	
+	for x in range(-1, size.x + 1):
+		set_cell(x, -1, 6)
+		set_cell(x, size.y, 6)
+	
+	for y in range(-1, size.y + 1):
+		set_cell(-1, y, 6)
+		set_cell(size.x, y, 6)
+
+	for x in range(size.x):
+		for y in range(size.y):
+			set_cell(x, y, randi() % 6)
 	
 	for x in range(1,4):
 		for y in range(1,4):
@@ -22,14 +32,14 @@ func _input(event):
 	
 	if event is InputEventMouseButton:
 		if (event.pressed == true and event.button_index == BUTTON_LEFT
-			and tile != -1
+			and tile != -1 and tile != 6
 		):
 			emit_signal("tile_clicked", tile_world_pos, tile_coord)
 	
 	if event is InputEventMouseMotion:
 		if tile == -1:
 			emit_signal("tile_unhovered")
-		else:
+		elif tile != 6:
 			emit_signal("tile_hovered", tile_world_pos)
 
 func erase_tile(coord):

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-signal started_moving
+signal pos_changed(position)
 
 var gravity = 2048
 var vel = Vector2()
@@ -21,10 +21,10 @@ func _physics_process(delta):
 		vel.y -= 750
 		signaling = true
 	
-	if signaling:
-		emit_signal("started_moving")
+	var result = move_and_slide(vel, Vector2(0,-1))
 	
-	move_and_slide(vel, Vector2(0,-1))
+	if result.x != 0 or result.y != 0:
+		emit_signal("pos_changed", position)
 	
 	if is_on_floor() or is_on_ceiling():
 		vel.y = 0
