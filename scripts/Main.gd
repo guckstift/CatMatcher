@@ -5,9 +5,6 @@ export (PackedScene) var Particles
 var sel = null
 var sel_pos = null
 
-func _ready():
-	pass#$Player.position = $TileMap.map_to_world(Vector2(2,3)) + Vector2(32, 32)
-
 func _on_TileMap_tile_clicked(tile_world_pos, tile_coord):
 	if sel == null:
 		select(tile_coord, tile_world_pos)

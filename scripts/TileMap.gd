@@ -1,28 +1,14 @@
+tool
 extends TileMap
+
+export(bool) var regen_trigger = false setget generate
+export(int) var random_seed = 0
 
 signal tile_clicked(tile_world_pos, tile_coord)
 signal tile_hovered(tile_world_pos)
 signal tile_unhovered
 
 var size = Vector2(16, 16)
-
-func _ready():
-	
-	for x in range(-1, size.x + 1):
-		set_cell(x, -1, 6)
-		set_cell(x, size.y, 6)
-	
-	for y in range(-1, size.y + 1):
-		set_cell(-1, y, 6)
-		set_cell(size.x, y, 6)
-
-	for x in range(size.x):
-		for y in range(size.y):
-			set_cell(x, y, randi() % 6)
-	
-	for x in range(1,4):
-		for y in range(1,4):
-			set_cell(x, y, -1)
 
 func _input(event):
 	var world_pos = get_global_mouse_position()
@@ -41,6 +27,26 @@ func _input(event):
 			emit_signal("tile_unhovered")
 		elif tile != 6:
 			emit_signal("tile_hovered", tile_world_pos)
+
+func generate(foo):
+	regen_trigger = foo
+	
+	if regen_trigger  == false:
+		return
+	
+	seed(random_seed)
+	
+	for x in range(-1, size.x + 1):
+		set_cell(x, -1, 6)
+		set_cell(x, size.y, 6)
+	
+	for y in range(-1, size.y + 1):
+		set_cell(-1, y, 6)
+		set_cell(size.x, y, 6)
+	
+	for x in range(size.x):
+		for y in range(size.y):
+			set_cell(x, y, randi() % 6)
 
 func erase_tile(coord):
 	set_cellv(coord, -1)

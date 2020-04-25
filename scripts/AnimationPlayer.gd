@@ -5,8 +5,8 @@ signal slide_finished
 var moveSounds = []
 
 func _ready():
-	moveSounds.append(load("res://sfx/move.ogg"))
-	moveSounds.append(load("res://sfx/move2.ogg"))
+	moveSounds.append(load("res://sfx/move.wav"))
+	moveSounds.append(load("res://sfx/move2.wav"))
 
 func start_slide(sel_pos, adj_pos, sel_tile, adj_tile):
 	$FakeSel.setup_slide(sel_pos, adj_pos, sel_tile)

@@ -1,18 +1,15 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://gfx/tiles.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Camera2D.gd" type="Script" id=3]
 [ext_resource path="res://scripts/TileMap.gd" type="Script" id=4]
-[ext_resource path="res://sfx/blop.ogg" type="AudioStream" id=5]
+[ext_resource path="res://sfx/blop.wav" type="AudioStream" id=5]
 [ext_resource path="res://scripts/Selector.gd" type="Script" id=6]
 [ext_resource path="res://gfx/picker.png" type="Texture" id=7]
-[ext_resource path="res://Fake.tscn" type="PackedScene" id=8]
+[ext_resource path="res://TileSwapper.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Particles.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scripts/AnimationPlayer.gd" type="Script" id=10]
-[ext_resource path="res://gfx/player.png" type="Texture" id=11]
-[ext_resource path="res://scripts/Player.gd" type="Script" id=12]
-[ext_resource path="res://sfx/walk.wav" type="AudioStream" id=13]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -26,16 +23,16 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=8]
+[sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=9]
+[sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=10]
+[sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
-[sub_resource type="TileSet" id=5]
+[sub_resource type="TileSet" id=8]
 0/name = "red"
 0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
@@ -130,14 +127,14 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 4/navigation_offset = Vector2( 0, 0 )
 4/shape_offset = Vector2( 0, 0 )
 4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-4/shape = SubResource( 8 )
+4/shape = SubResource( 5 )
 4/shape_one_way = false
 4/shape_one_way_margin = 1.0
 4/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 8 ),
+"shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 4/z_index = 0
@@ -151,14 +148,14 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 5/navigation_offset = Vector2( 0, 0 )
 5/shape_offset = Vector2( 0, 0 )
 5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-5/shape = SubResource( 9 )
+5/shape = SubResource( 6 )
 5/shape_one_way = false
 5/shape_one_way_margin = 1.0
 5/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 9 ),
+"shape": SubResource( 6 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 5/z_index = 0
@@ -172,46 +169,20 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 6/navigation_offset = Vector2( 0, 0 )
 6/shape_offset = Vector2( 0, 0 )
 6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-6/shape = SubResource( 10 )
+6/shape = SubResource( 7 )
 6/shape_one_way = false
 6/shape_one_way_margin = 1.0
 6/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 10 ),
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 6/z_index = 0
 
-[sub_resource type="Animation" id=6]
-tracks/0/type = "value"
-tracks/0/path = NodePath("TileSwapper/FakeSel:way")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("TileSwapper/FakeAdj:way")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0 ]
-}
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 16, 16 )
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 96, 96 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -224,10 +195,12 @@ smoothing_speed = 8.0
 script = ExtResource( 3 )
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 5 )
+tile_set = SubResource( 8 )
 collision_use_kinematic = true
 format = 1
+tile_data = PoolIntArray( -1, 6, 0, -65536, 6, 0, -65535, 6, 0, -65534, 6, 0, -65533, 6, 0, -65532, 6, 0, -65531, 6, 0, -65530, 6, 0, -65529, 6, 0, -65528, 6, 0, -65527, 6, 0, -65526, 6, 0, -65525, 6, 0, -65524, 6, 0, -65523, 6, 0, -65522, 6, 0, -65521, 6, 0, -65520, 6, 0, 65535, 6, 0, 0, 3, 0, 1, 0, 0, 2, 2, 0, 3, 0, 0, 4, 5, 0, 5, 4, 0, 6, 0, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 0, 0, 13, 3, 0, 14, 5, 0, 15, 1, 0, 16, 6, 0, 131071, 6, 0, 65536, 0, 0, 65540, 5, 0, 65541, 0, 0, 65542, 5, 0, 65543, 2, 0, 65544, 4, 0, 65545, 1, 0, 65546, 0, 0, 65547, 3, 0, 65548, 0, 0, 65549, 2, 0, 65550, 1, 0, 65551, 3, 0, 65552, 6, 0, 196607, 6, 0, 131072, 1, 0, 131076, 5, 0, 131077, 0, 0, 131078, 5, 0, 131079, 4, 0, 131080, 0, 0, 131081, 0, 0, 131082, 4, 0, 131083, 4, 0, 131084, 2, 0, 131085, 0, 0, 131086, 3, 0, 131087, 1, 0, 131088, 6, 0, 262143, 6, 0, 196608, 4, 0, 196612, 0, 0, 196613, 1, 0, 196614, 1, 0, 196615, 4, 0, 196616, 5, 0, 196617, 3, 0, 196618, 4, 0, 196619, 0, 0, 196620, 1, 0, 196621, 0, 0, 196622, 0, 0, 196623, 5, 0, 196624, 6, 0, 327679, 6, 0, 262144, 3, 0, 262145, 3, 0, 262146, 3, 0, 262147, 4, 0, 262148, 1, 0, 262149, 5, 0, 262150, 5, 0, 262151, 1, 0, 262152, 2, 0, 262153, 5, 0, 262154, 5, 0, 262155, 4, 0, 262156, 2, 0, 262157, 0, 0, 262158, 1, 0, 262159, 2, 0, 262160, 6, 0, 393215, 6, 0, 327680, 5, 0, 327681, 2, 0, 327682, 2, 0, 327683, 0, 0, 327684, 1, 0, 327685, 5, 0, 327686, 5, 0, 327687, 0, 0, 327688, 3, 0, 327689, 1, 0, 327690, 5, 0, 327691, 3, 0, 327692, 4, 0, 327693, 5, 0, 327694, 4, 0, 327695, 1, 0, 327696, 6, 0, 458751, 6, 0, 393216, 1, 0, 393217, 5, 0, 393218, 5, 0, 393219, 1, 0, 393220, 1, 0, 393221, 4, 0, 393222, 2, 0, 393223, 2, 0, 393224, 5, 0, 393225, 1, 0, 393226, 3, 0, 393227, 5, 0, 393228, 2, 0, 393229, 0, 0, 393230, 1, 0, 393231, 1, 0, 393232, 6, 0, 524287, 6, 0, 458752, 5, 0, 458753, 1, 0, 458754, 5, 0, 458755, 5, 0, 458756, 2, 0, 458757, 5, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 4, 0, 458762, 5, 0, 458763, 0, 0, 458764, 5, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 6, 0, 589823, 6, 0, 524288, 3, 0, 524289, 0, 0, 524290, 0, 0, 524291, 4, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 5, 0, 524298, 3, 0, 524299, 0, 0, 524300, 1, 0, 524301, 4, 0, 524302, 0, 0, 524303, 2, 0, 524304, 6, 0, 655359, 6, 0, 589824, 5, 0, 589825, 5, 0, 589826, 5, 0, 589827, 4, 0, 589828, 5, 0, 589829, 4, 0, 589830, 1, 0, 589831, 5, 0, 589832, 4, 0, 589833, 4, 0, 589834, 3, 0, 589835, 1, 0, 589836, 5, 0, 589837, 0, 0, 589838, 1, 0, 589839, 0, 0, 589840, 6, 0, 720895, 6, 0, 655360, 1, 0, 655361, 0, 0, 655362, 1, 0, 655363, 4, 0, 655364, 1, 0, 655365, 3, 0, 655366, 0, 0, 655367, 1, 0, 655368, 5, 0, 655369, 2, 0, 655370, 2, 0, 655371, 0, 0, 655372, 2, 0, 655373, 0, 0, 655374, 5, 0, 655375, 2, 0, 655376, 6, 0, 786431, 6, 0, 720896, 4, 0, 720897, 5, 0, 720898, 2, 0, 720899, 2, 0, 720900, 3, 0, 720901, 1, 0, 720902, 0, 0, 720903, 2, 0, 720904, 5, 0, 720905, 1, 0, 720906, 2, 0, 720907, 1, 0, 720908, 4, 0, 720909, 5, 0, 720910, 2, 0, 720911, 5, 0, 720912, 6, 0, 851967, 6, 0, 786432, 2, 0, 786433, 4, 0, 786434, 5, 0, 786435, 1, 0, 786436, 3, 0, 786437, 4, 0, 786438, 3, 0, 786439, 2, 0, 786440, 1, 0, 786441, 5, 0, 786442, 5, 0, 786443, 1, 0, 786447, 2, 0, 786448, 6, 0, 917503, 6, 0, 851968, 3, 0, 851969, 2, 0, 851970, 0, 0, 851971, 2, 0, 851972, 5, 0, 851973, 2, 0, 851974, 1, 0, 851975, 5, 0, 851976, 2, 0, 851977, 1, 0, 851978, 1, 0, 851979, 2, 0, 851983, 5, 0, 851984, 6, 0, 983039, 6, 0, 917504, 3, 0, 917505, 2, 0, 917506, 5, 0, 917507, 5, 0, 917508, 4, 0, 917509, 4, 0, 917510, 1, 0, 917511, 3, 0, 917512, 3, 0, 917513, 1, 0, 917514, 1, 0, 917515, 2, 0, 917519, 3, 0, 917520, 6, 0, 1048575, 6, 0, 983040, 3, 0, 983041, 5, 0, 983042, 0, 0, 983043, 1, 0, 983044, 2, 0, 983045, 1, 0, 983046, 3, 0, 983047, 2, 0, 983048, 0, 0, 983049, 1, 0, 983050, 1, 0, 983051, 3, 0, 983052, 2, 0, 983053, 1, 0, 983054, 4, 0, 983055, 5, 0, 983056, 6, 0, 1114111, 6, 0, 1048576, 6, 0, 1048577, 6, 0, 1048578, 6, 0, 1048579, 6, 0, 1048580, 6, 0, 1048581, 6, 0, 1048582, 6, 0, 1048583, 6, 0, 1048584, 6, 0, 1048585, 6, 0, 1048586, 6, 0, 1048587, 6, 0, 1048588, 6, 0, 1048589, 6, 0, 1048590, 6, 0, 1048591, 6, 0, 1048592, 6, 0 )
 script = ExtResource( 4 )
+random_seed = 1
 
 [node name="Selector" type="Sprite" parent="."]
 position = Vector2( 192, 0 )
@@ -241,16 +214,7 @@ texture = ExtResource( 7 )
 offset = Vector2( 32, 32 )
 script = ExtResource( 6 )
 
-[node name="TileSwapper" type="AnimationPlayer" parent="."]
-playback_speed = 2.0
-anims/MoveFakes = SubResource( 6 )
-script = ExtResource( 10 )
-
-[node name="FakeSel" parent="TileSwapper" instance=ExtResource( 8 )]
-position = Vector2( 192, 128 )
-
-[node name="FakeAdj" parent="TileSwapper" instance=ExtResource( 8 )]
-position = Vector2( 320, 128 )
+[node name="TileSwapper" parent="." instance=ExtResource( 8 )]
 
 [node name="BreakDelay" type="Timer" parent="."]
 wait_time = 0.05
@@ -262,25 +226,14 @@ stream = ExtResource( 5 )
 max_distance = 12345.0
 attenuation = 6.54158e-05
 
-[node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 128, 128 )
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="Player" parent="." instance=ExtResource( 10 )]
 
-[node name="Sprite" type="Sprite" parent="Player"]
-texture = ExtResource( 11 )
+[node name="Destination" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource( 7 )
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
-stream = ExtResource( 13 )
-max_distance = 12345.0
-attenuation = 0.00464534
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Destination"]
+position = Vector2( 864, 864 )
+shape = SubResource( 11 )
 [connection signal="tile_clicked" from="TileMap" to="." method="_on_TileMap_tile_clicked"]
 [connection signal="tile_hovered" from="TileMap" to="." method="_on_TileMap_tile_hovered"]
 [connection signal="tile_unhovered" from="TileMap" to="." method="_on_TileMap_tile_unhovered"]
-[connection signal="animation_finished" from="TileSwapper" to="TileSwapper" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pos_changed" from="Player" to="Camera2D" method="_on_Player_pos_changed"]
