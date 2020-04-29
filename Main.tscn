@@ -181,7 +181,7 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 } ]
 6/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 96, 96 )
 
 [node name="Main" type="Node2D"]
@@ -232,7 +232,7 @@ attenuation = 6.54158e-05
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destination"]
 position = Vector2( 864, 864 )
-shape = SubResource( 11 )
+shape = SubResource( 9 )
 [connection signal="tile_clicked" from="TileMap" to="." method="_on_TileMap_tile_clicked"]
 [connection signal="tile_hovered" from="TileMap" to="." method="_on_TileMap_tile_hovered"]
 [connection signal="tile_unhovered" from="TileMap" to="." method="_on_TileMap_tile_unhovered"]
